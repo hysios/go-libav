@@ -127,7 +127,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/imkira/go-libav/avutil"
+	"github.com/hysios/go-libav/avutil"
 )
 
 var (
@@ -143,6 +143,8 @@ const (
 	CodecIDNone  CodecID = C.AV_CODEC_ID_NONE
 	CodecIDMJpeg CodecID = C.AV_CODEC_ID_MJPEG
 	CodecIDLJpeg CodecID = C.AV_CODEC_ID_LJPEG
+	CodecIDAac   CodecID = C.AV_CODEC_ID_AAC
+	CodecIDMp2   CodecID = C.AV_CODEC_ID_MP2
 )
 
 type Flags int
@@ -313,7 +315,6 @@ func init() {
 func Version() (int, int, int) {
 	return int(C.GO_AVCODEC_VERSION_MAJOR), int(C.GO_AVCODEC_VERSION_MINOR), int(C.GO_AVCODEC_VERSION_MICRO)
 }
-
 
 func RegisterAll() {
 	C.avcodec_register_all()
