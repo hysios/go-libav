@@ -810,6 +810,22 @@ func (f *Frame) SetExtendedData(data unsafe.Pointer) {
 	f.CAVFrame.extended_data = (**C.uint8_t)(data)
 }
 
+func (f *Frame) SampleFormat() SampleFormat {
+	return SampleFormat(f.CAVFrame.format)
+}
+
+func (f *Frame) SetSampleFormat(simpleFmt SampleFormat) {
+	f.CAVFrame.format = (C.int)(simpleFmt)
+}
+
+func (f *Frame) ChannelLayout() ChannelLayout {
+	return ChannelLayout(f.CAVFrame.channel_layout)
+}
+
+func (f *Frame) SetChannelLayout(layout ChannelLayout) {
+	f.CAVFrame.channel_layout = (C.uint64_t)(layout)
+}
+
 func (f *Frame) Width() int {
 	return int(f.CAVFrame.width)
 }
